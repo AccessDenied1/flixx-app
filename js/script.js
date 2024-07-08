@@ -10,22 +10,13 @@ async function displayPopularMovies() {
 //fetch data from TMBD
 async function fetchAPIData(endpoint) {
   const API_URL = 'https://api.themoviedb.org/3/';
-  const options = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization: 'Bearer db5d851cca86bca03944d4e518af2c41',
-    },
-  };
-
-  fetch(
+  const response = await fetch(
     'https://api.themoviedb.org/3/movie/popular?api_key=db5d851cca86bca03944d4e518af2c41&language=en-US'
-  )
-    .then((response) => response.json())
-    .then((response) => console.log(response))
-    .catch((err) => console.error(err));
-}
+  );
 
+  const data = await response.json();
+  return data;
+}
 //Highlight active link
 function highlightActiveLink() {
   const links = document.querySelectorAll('.nav-link');
