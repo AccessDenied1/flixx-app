@@ -18,7 +18,9 @@ async function fetchAPIData(endpoint) {
     },
   };
 
-  fetch('https://api.themoviedb.org/3/movie/popular?language=en-US', options)
+  fetch(
+    'https://api.themoviedb.org/3/movie/popular?api_key=db5d851cca86bca03944d4e518af2c41&language=en-US'
+  )
     .then((response) => response.json())
     .then((response) => console.log(response))
     .catch((err) => console.error(err));
