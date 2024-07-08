@@ -14,15 +14,14 @@ async function fetchAPIData(endpoint) {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkYjVkODUxY2NhODZiY2EwMzk0NGQ0ZTUxOGFmMmM0MSIsIm5iZiI6MTcyMDQ0NDQzNC4wNzAxMjYsInN1YiI6IjY2ODhmZTMyNDM5ZWMxOWZjMjFkMGUzYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.7gm6uEvyHcg7tXaGv6Ie3ob5OUe2rXJNNwokZrG79yA',
+      Authorization: 'Bearer db5d851cca86bca03944d4e518af2c41',
     },
   };
 
-  const response = fetch(`${API_URL}${endpoint}?language=en-US`, options);
-  console.log('response = ', response);
-  const data = (await response).json;
-  return data;
+  fetch('https://api.themoviedb.org/3/movie/popular?language=en-US', options)
+    .then((response) => response.json())
+    .then((response) => console.log(response))
+    .catch((err) => console.error(err));
 }
 
 //Highlight active link
