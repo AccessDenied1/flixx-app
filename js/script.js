@@ -2,31 +2,9 @@ const global = {
   currentPage: window.location.pathname,
 };
 
-async function displayPopularTvShows() {
-  const { results } = await fetchAPIData('tv/popular');
-  results.forEach((tvShow) => {
-    const div = document.createElement('div');
-    div.classList.add('card');
-    div.innerHTML = `
-          <a href="tv-details.html?id=1">
-            <img
-              src="images/no-image.jpg"
-              class="card-img-top"
-              alt="Show Title"
-            />
-          </a>
-          <div class="card-body">
-            <h5 class="card-title">Show Title</h5>
-            <p class="card-text">
-              <small class="text-muted">Aired: XX/XX/XXXX</small>
-            </p>
-          </div>
-        </div>`;
-  });
-}
-
 async function displayPopularShows() {
   const { results } = await fetchAPIData('tv/popular');
+  console.log(results);
   results.forEach((show) => {
     const div = document.createElement('div');
     div.classList.add('card');
@@ -92,13 +70,11 @@ async function fetchAPIData(endpoint) {
   const API_URL = 'https://api.themoviedb.org/3/';
 
   showSpinner();
-
   const response = await fetch(
     `${API_URL}${endpoint}?api_key=db5d851cca86bca03944d4e518af2c41&language=en-US`
   );
 
   const data = await response.json();
-
   hideSpinner();
   return data;
 }
