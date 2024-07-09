@@ -30,7 +30,7 @@ async function displayPopularMovies() {
           <small class='text-muted'>Release: ${movie.release_date}</small>
         </p>
       </div>`;
-    document.appendChild(div);
+    document.querySelector('#popular-movies').appendChild(div);
   });
 }
 //fetch data from TMBD
