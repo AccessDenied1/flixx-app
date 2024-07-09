@@ -100,10 +100,13 @@ function highlightActiveLink() {
 function init() {
   console.log(global.currentPage);
   switch (global.currentPage) {
-    case '/' || '/index' || 'index.html':
+    case '/':
+    case '/index':
+    case 'index.html':
       displayPopularMovies();
       break;
-    case '/shows.html' || '/shows':
+    case '/shows':
+    case '/shows.html':
       displayPopularShows();
       break;
     case '/movie-details.html':
