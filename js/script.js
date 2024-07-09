@@ -133,7 +133,7 @@ async function displayMovieDetails() {
 function displayBackgroundImage(type, backgroundPath) {
   console.log('inside displayBackgroundImage');
   const overlayDiv = document.createElement('div');
-  overlayDiv.style.backgroundImage = `url(https://image.tmbd.org/t/p/original/${backgroundPath})`;
+  overlayDiv.style.backgroundImage = `url(https://image.tmbd.org/t/p/original${backgroundPath})`;
   overlayDiv.style.backgroundSize = 'cover';
   overlayDiv.style.backgroundPosition = 'center';
   overlayDiv.style.backgroundRepeat = 'no-repeat';
