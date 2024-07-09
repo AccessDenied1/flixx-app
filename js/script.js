@@ -67,7 +67,6 @@ async function displayPopularMovies() {
 // Display movie details
 async function displayMovieDetails() {
   const movieId = window.location.search.split('=')[1];
-
   const movie = await fetchAPIData(`movie/${movieId}`);
 
   const div = document.createElement('div');
@@ -99,7 +98,7 @@ async function displayMovieDetails() {
         </p>
         <h5>Genres</h5>
         <ul class="list-group">
-        ${movie.genres.map((genre) => `<li>${genre.name}</li>`.join(''))}
+            ${movie.genres.map((genre) => `<li>${genre.name}</li>`).join('')}
         </ul>
         <a href="${
           movie.homepage
@@ -121,9 +120,9 @@ async function displayMovieDetails() {
         <li><span class="text-secondary">Status:</span> ${movie.status}</li>
     </ul>
     <h4>Production Companies</h4>
-    <div class="list-group">${movie.production_companies.map((company) =>
-      `<span>${company.name}</span>`.join(', ')
-    )}</div>
+    <div class="list-group">${movie.production_companies
+      .map((company) => `<span>${company.name}</span>`)
+      .join(', ')}</div>
     </div>`;
   document.querySelector('#movie-details').appendChild(div);
 }
