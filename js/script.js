@@ -131,9 +131,8 @@ async function displayMovieDetails() {
 
 //Display Backdrop on Details Pages
 function displayBackgroundImage(type, backgroundPath) {
-  console.log('inside displayBackgroundImage');
   const overlayDiv = document.createElement('div');
-  overlayDiv.style.backgroundImage = `url(https://image.tmbd.org/t/p/original${backgroundPath})`;
+  overlayDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${backgroundPath})`;
   overlayDiv.style.backgroundSize = 'cover';
   overlayDiv.style.backgroundPosition = 'center';
   overlayDiv.style.backgroundRepeat = 'no-repeat';
@@ -144,7 +143,6 @@ function displayBackgroundImage(type, backgroundPath) {
   overlayDiv.style.left = '0';
   overlayDiv.style.zIndex = '-1';
   overlayDiv.style.opacity = '0.2';
-  console.log(overlayDiv);
 
   if (type === 'movie') {
     document.querySelector('#movie-details').appendChild(overlayDiv);
