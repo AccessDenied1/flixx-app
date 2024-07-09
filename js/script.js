@@ -160,6 +160,15 @@ async function displayShowDetails() {
           ${show.vote_average.toFixed(1)} / 10
           </p>
           <p class="text-muted">Last Air Date: ${show.last_air_date}</p>
+          ${
+            show.overview
+              ? `<p>
+          ${show.overview}
+          </p>`
+              : `<p>
+          No Overview
+          </p>`
+          }
           <p>
           ${show.overview}
           </p>
@@ -175,7 +184,7 @@ async function displayShowDetails() {
       <div class="details-bottom">
       <h2>Show Info</h2>
       <ul>
-          <li><span class="text-secondary">Number of Episodes:</span>${
+          <li><span class="text-secondary">Number of Episodes:</span> ${
             show.number_of_episodes
           }</li>
           <li><span class="text-secondary">Last Episode to Air:</span> ${addCommasToNumber(
