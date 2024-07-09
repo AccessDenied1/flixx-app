@@ -98,6 +98,7 @@ function highlightActiveLink() {
 
 //Init Page
 function init() {
+  console.log(global.currentPage);
   switch (global.currentPage) {
     case '/':
     case '/index.html':
