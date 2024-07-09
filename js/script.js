@@ -3,7 +3,7 @@ const global = {
 };
 
 async function displayPopularMovies() {
-  const { results } = fetchAPIData('movies/popular');
+  const { results } = fetchAPIData('movie/popular');
   console.log(results);
   results.forEach((movie) => {
     const div = document.createElement('div');
