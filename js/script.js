@@ -3,7 +3,7 @@ const global = {
 };
 
 async function displayPopularMovies() {
-  const { results } = fetchAPIData('movie/popular');
+  const { results } = await fetchAPIData('movie/popular');
   console.log(results);
   results.forEach((movie) => {
     const div = document.createElement('div');
@@ -41,7 +41,6 @@ async function fetchAPIData(endpoint) {
   );
 
   const data = await response.json();
-  console.log('data = ', data);
   return data;
 }
 //Highlight active link
