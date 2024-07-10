@@ -163,16 +163,11 @@ async function displayShowDetails() {
           ${
             show.overview
               ? `<p>
-          ${show.overview}
-          </p>`
+                ${show.overview}
+            </p>`
               : `<p>
-        dslkjf;lwajeflk wjq qwelfj'qjef'lqkjre
-        f;relfqerjferjre;rjejf;erjg;rejge;lrkllkjjkkk fghjkdfghjkdfghjkdfghjkdfghjkdfghj
-
-
-        dfghjkldfghjklfghjklfghjkl;fghjkl;fghl;ghjkl;fgjkl;fghkl;
-        hgfkilhskalhfd;vladsnzfo'   elrqnv'ekan'
-          </p>`
+                No Description
+            </p>`
           }
           <p>
           ${show.overview}
