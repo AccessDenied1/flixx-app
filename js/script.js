@@ -167,6 +167,7 @@ async function displayShowDetails() {
             </p>`
               : `<p>
                 No Description
+                YES!!
             </p>`
           }
           <p>
