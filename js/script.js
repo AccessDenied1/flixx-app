@@ -321,8 +321,6 @@ function displaySearchResults(results) {
   document.querySelector('#search-results').innerHTML = '';
   document.querySelector('#pagination').innerHTML = '';
   document.querySelector('#search-results-heading').innerHTML = '';
-  global.search.currPageResults =
-    global.search.prevPageResults + results.length;
 
   results.forEach((result) => {
     const div = document.createElement('div');
@@ -398,12 +396,16 @@ function displayPagination() {
     const { results, total_pages } = await searchAPIData();
     global.search.prevPageResults += results.length;
     displaySearchResults(results);
+    global.search.currPageResults =
+      global.search.prevPageResults - results.length;
   });
   document.querySelector('#prev').addEventListener('click', async () => {
     global.search.page--;
     const { results, total_pages } = await searchAPIData();
     global.search.prevPageResults -= results.length;
     displaySearchResults(results);
+    global.search.currPageResults =
+      global.search.prevPageResults - results.length;
   });
 }
 
