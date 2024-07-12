@@ -384,7 +384,11 @@ function displayPagination() {
   //Next Page
   document.querySelector('#next').addEventListener('click', async () => {
     global.search.page++;
-
+    const { results, total_pages } = await searchAPIData();
+    displaySearchResults(results);
+  });
+  document.querySelector('#prev').addEventListener('click', async () => {
+    global.search.page--;
     const { results, total_pages } = await searchAPIData();
     displaySearchResults(results);
   });
