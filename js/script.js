@@ -353,8 +353,8 @@ function displaySearchResults(results) {
         </p>
       </div>`;
     document.querySelector('#search-results-heading').innerHTML = `<h2>${
-      global.search.page - 1
-    }*${results.length}-${global.search.page}*${results.length} of ${
+      global.search.page - 1 * results.length
+    }-${global.search.page * results.length} of ${
       global.search.totalResults
     } Results for ${global.search.term}</h2>`;
     document.querySelector('#search-results').appendChild(div);
