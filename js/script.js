@@ -356,9 +356,10 @@ function displaySearchResults(results) {
       </div>`;
     document.querySelector('#search-results-heading').innerHTML = `<h2>${
       global.search.prevPageResults
-    }-${(global.search.prevPageResults += results.length)} of ${
+    }-${global.search.prevPageResults + results.length} of ${
       global.search.totalResults
     } Results for ${global.search.term}</h2>`;
+    global.search.prevPageResults += results.length;
     document.querySelector('#search-results').appendChild(div);
   });
 
