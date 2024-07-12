@@ -369,8 +369,6 @@ function displaySearchResults(results) {
     ).innerHTML = `<h2>${global.search.prevPageResults}-${global.search.currPageResults} of ${global.search.totalResults} Results for ${global.search.term}</h2>`;
     document.querySelector('#search-results').appendChild(div);
   });
-  global.search.prevPageResults += results.length;
-
   displayPagination();
 }
 
@@ -398,11 +396,13 @@ function displayPagination() {
   document.querySelector('#next').addEventListener('click', async () => {
     global.search.page++;
     const { results, total_pages } = await searchAPIData();
+    global.search.prevPageResults += results.length;
     displaySearchResults(results);
   });
   document.querySelector('#prev').addEventListener('click', async () => {
     global.search.page--;
     const { results, total_pages } = await searchAPIData();
+    global.search.prevPageResults -= results.length;
     displaySearchResults(results);
   });
 }
