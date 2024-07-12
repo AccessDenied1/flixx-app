@@ -5,6 +5,7 @@ const global = {
     type: '',
     page: 1,
     totalPages: 1,
+    totalResults: 0,
   },
   api: {
     apiKey: 'db5d851cca86bca03944d4e518af2c41',
@@ -294,7 +295,11 @@ async function search() {
   global.search.term = urlParams.get('search-term');
 
   if (global.search.term !== '' && global.search.term !== null) {
-    const { results, total_pages, page } = await searchAPIData();
+    const { results, total_pages, page, total_results } = await searchAPIData();
+
+    global.search.page = page;
+    global.search.totalResults = total_results;
+    global.search.totalPages = total_pages;
     if (results.length === 0) {
       showAlert('No results found');
       return;
@@ -343,8 +348,25 @@ function displaySearchResults(results) {
           }</small>
         </p>
       </div>`;
+    document.querySelector(
+      '#search-results-heading'
+    ).innerHTML = `<h2>${result.length} of ${global.search.totalResults} Results for ${global.search.term}</h2>`;
     document.querySelector('#search-results').appendChild(div);
   });
+
+  displayPagination();
+}
+
+//Create Pagination for search
+function displayPagination() {
+  const div = document.createElement('div');
+  div.classList.add('pagination');
+  div.innerHTML = `
+  <button class="btn btn-primary" id="prev">Prev</button>
+  <button class="btn btn-primary" id="next">Next</button>
+  <div class="page-counter">Page ${global.search.page} of ${global.search.totalPages}</div>
+  `;
+  document.querySelector('#pagination').appendChild(div);
 }
 
 //fetch data from TMBD
