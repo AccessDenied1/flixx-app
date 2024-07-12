@@ -352,9 +352,11 @@ function displaySearchResults(results) {
           }</small>
         </p>
       </div>`;
-    document.querySelector(
-      '#search-results-heading'
-    ).innerHTML = `<h2>${results.length} of ${global.search.totalResults} Results for ${global.search.term}</h2>`;
+    document.querySelector('#search-results-heading').innerHTML = `<h2>${
+      global.search.page - 1
+    }*${results.length}-${global.search.page}*${results.length} of ${
+      global.search.totalResults
+    } Results for ${global.search.term}</h2>`;
     document.querySelector('#search-results').appendChild(div);
   });
 
