@@ -354,6 +354,10 @@ function displaySearchResults(results) {
           }</small>
         </p>
       </div>`;
+    console.log(
+      'global.search.prevPageResults = ',
+      global.search.prevPageResults
+    );
     document.querySelector('#search-results-heading').innerHTML = `<h2>${
       global.search.prevPageResults
     }-${global.search.prevPageResults + results.length} of ${
