@@ -7,6 +7,7 @@ const global = {
     totalPages: 1,
     totalResults: 0,
     prevPageResults: 0,
+    currPageResults: 0,
   },
   api: {
     apiKey: 'db5d851cca86bca03944d4e518af2c41',
@@ -295,6 +296,7 @@ async function search() {
   global.search.type = urlParams.get('type');
   global.search.term = urlParams.get('search-term');
   global.search.prevPageResults = 0;
+  global.search.currPageResults = 0;
 
   if (global.search.term !== '' && global.search.term !== null) {
     const { results, total_pages, page, total_results } = await searchAPIData();
@@ -319,6 +321,9 @@ function displaySearchResults(results) {
   document.querySelector('#search-results').innerHTML = '';
   document.querySelector('#pagination').innerHTML = '';
   document.querySelector('#search-results-heading').innerHTML = '';
+  global.search.currPageResults =
+    global.search.prevPageResults + results.length;
+
   results.forEach((result) => {
     const div = document.createElement('div');
     div.classList.add('card');
@@ -354,18 +359,17 @@ function displaySearchResults(results) {
           }</small>
         </p>
       </div>`;
+
     console.log(
       'global.search.prevPageResults = ',
       global.search.prevPageResults
     );
-    document.querySelector('#search-results-heading').innerHTML = `<h2>${
-      global.search.prevPageResults
-    }-${global.search.prevPageResults + results.length} of ${
-      global.search.totalResults
-    } Results for ${global.search.term}</h2>`;
+    document.querySelector(
+      '#search-results-heading'
+    ).innerHTML = `<h2>${global.search.prevPageResults}-${global.search.currPageResults} of ${global.search.totalResults} Results for ${global.search.term}</h2>`;
     document.querySelector('#search-results').appendChild(div);
-    global.search.prevPageResults += results.length;
   });
+  global.search.prevPageResults += results.length;
 
   displayPagination();
 }
