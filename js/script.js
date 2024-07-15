@@ -309,6 +309,8 @@ async function search() {
       return;
     } else {
       displaySearchResults(results);
+      global.search.currPageResults =
+        global.search.prevPageResults + results.length;
       document.querySelector('#search-term').value = '';
     }
   } else {
@@ -394,18 +396,16 @@ function displayPagination() {
   document.querySelector('#next').addEventListener('click', async () => {
     global.search.page++;
     const { results, total_pages } = await searchAPIData();
-    global.search.prevPageResults += results.length;
+    global.search.prevPageResults = global.search.currPageResults;
+    global.search.currPageResults += results.length;
     displaySearchResults(results);
-    global.search.currPageResults =
-      global.search.prevPageResults - results.length;
   });
   document.querySelector('#prev').addEventListener('click', async () => {
     global.search.page--;
     const { results, total_pages } = await searchAPIData();
+    global.search.currPageResults = global.search.prevPageResults;
     global.search.prevPageResults -= results.length;
     displaySearchResults(results);
-    global.search.currPageResults =
-      global.search.prevPageResults - results.length;
   });
 }
 
