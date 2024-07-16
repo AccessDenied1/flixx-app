@@ -308,9 +308,9 @@ async function search() {
       showAlert('No results found');
       return;
     } else {
-      displaySearchResults(results);
       global.search.currPageResults =
         global.search.prevPageResults + results.length;
+      displaySearchResults(results);
       document.querySelector('#search-term').value = '';
     }
   } else {
